@@ -1,0 +1,32 @@
+import random
+
+print(" Number Guessing Game")
+print("I'm thinking of a number from 1 to 100.")
+
+secret = random.randint(1, 100)
+guesses = 0
+
+while True:
+    user = input("Enter your guess (or 'q' to quit): ").strip().lower()
+    if user == "q":
+        print(f"Bye! The number was {secret}.")
+        break
+
+    if not user.isdigit():
+        print("Please enter a whole number.")
+        continue
+
+    guess = int(user)
+    if guess < 1 or guess > 100:
+        print("Guess must be between 1 and 100.")
+        continue
+
+    guesses += 1
+
+    if guess < secret:
+        print("Too low!")
+    elif guess > secret:
+        print("Too high!")
+    else:
+        print(f"Correct! It was {secret}. You got it in {guesses} guesses.")
+        break
